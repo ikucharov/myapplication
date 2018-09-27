@@ -10,15 +10,16 @@ import com.oauth.app.R
 import com.oauth.app.mvp.BaseView
 import com.oauth.app.mvp.Presenter
 import com.oauth.app.mvp.activity.MvpActivity
+import com.oauth.app.util.PreferencesUtil
+import javax.inject.Inject
 
-/**
- * Created by Bakhrom Sarimsakov
- * 10:54  07.11.2017
- */
 abstract class BaseMvpActivity<V : BaseView, P : Presenter<V>> : MvpActivity<V, P>() {
 
+
+    @Inject
+    lateinit var preferencesUtil: PreferencesUtil
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        val app = application as App
         dependencyInject()
         super.onCreate(savedInstanceState)
     }

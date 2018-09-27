@@ -13,7 +13,7 @@ data class Auth(
         val token_type: String?,
 
         @SerializedName("expires_in")
-        val expires_in: Int?,
+        val expires_in: Long?,
 
         @SerializedName("scope")
         val scope: String?)

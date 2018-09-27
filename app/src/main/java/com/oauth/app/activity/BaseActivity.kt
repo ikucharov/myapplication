@@ -14,7 +14,6 @@ open class BaseActivity : AppCompatActivity() {
     lateinit var preferencesUtil: PreferencesUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val app = application as App
         super.onCreate(savedInstanceState)
 
         App.getAppComponent().inject(this)

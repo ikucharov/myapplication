@@ -58,7 +58,7 @@ class MainPresenter(private val gson: Gson,
     }
 
     @SuppressLint("CheckResult")
-    private fun refreshToken() {
+    fun refreshToken() {
         api.refreshToken(preferencesUtil.refreshToken)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

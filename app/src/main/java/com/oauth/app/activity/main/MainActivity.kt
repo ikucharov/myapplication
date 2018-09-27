@@ -1,6 +1,8 @@
 package com.oauth.app.activity.main
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.View
 import com.oauth.app.App
 import com.oauth.app.R
@@ -22,6 +24,19 @@ class MainActivity : BaseMvpActivity<MainView, MainPresenter>(), MainView {
         buttonRefresh.setOnClickListener {
             presenter.getCredentials()
         }
+
+        val min = 300 * 1000
+        val handler = Handler()
+        val runnable = object : Runnable {
+            override fun run() {
+                // do your stuff - don't create a new runnable here!
+                handler.postDelayed(this,
+                        preferencesUtil.expiresIn - min)
+                presenter.refreshToken()
+            }
+        }
+
+        handler.post(runnable)
     }
 
     override fun setName(name: String?) {

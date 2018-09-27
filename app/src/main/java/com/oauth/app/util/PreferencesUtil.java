@@ -30,10 +30,10 @@ public final class PreferencesUtil {
     }
 
     public void saveTokenData(String token, String refreshToken,
-                              Integer expiresIn) {
+                              Long expiresIn) {
         preferences.edit()
                 .putString(PREFS_REFRESH_TOKEN, refreshToken)
-                .putInt(PREFS_EXPIRES_IN, expiresIn)
+                .putLong(PREFS_EXPIRES_IN, expiresIn)
                 .apply();
         // Reset secure preferences
         secure = null;
@@ -66,8 +66,8 @@ public final class PreferencesUtil {
         return preferences.getString(PREFS_REFRESH_TOKEN, "").trim();
     }
 
-    public Integer getExpiresIn() {
-        return preferences.getInt(PREFS_EXPIRES_IN, 0);
+    public Long getExpiresIn() {
+        return preferences.getLong(PREFS_EXPIRES_IN, 0);
     }
 
     private Secure getSecure() {
