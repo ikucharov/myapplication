@@ -1,0 +1,29 @@
+buildscript {
+
+    ext {
+        kotlinVersion = "1.2.51"
+        supportLibVersion = "28.0.0"
+        retrofitVersion = "2.4.0"
+        dagger2Version = "2.15"
+        roomPersistenceVersion = "1.0.0"
+        dateTime = new Date().format("yyyyMMddHHmmss")
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
